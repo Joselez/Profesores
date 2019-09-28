@@ -12,3 +12,8 @@ class Carrera extends Model
 
     protected $fillable=['nombre_car','decreto_car','id_profesor_car','resolucion_car'];
 }
+class Directores extends Model
+{
+    protected $table = 'directores_carreras';
+    public $timestamps = false; 
+}

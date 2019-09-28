@@ -249,6 +249,7 @@
                 Expedido por:<input id="exp" type="text" name="usuario[0][exp]" />
 
                 <input id="agrega" type="button" value="+" />
+                <br>
             </div>
 
             <script>
@@ -256,7 +257,7 @@
                     var cuentaInputs = $('#vida').children().length;
                     $('#agrega').click(function(){
                         cuentaInputs++;
-                        $('<br class="fila'+cuentaInputs+'"/><label class="fila'+cuentaInputs+'">Titulo.'+cuentaInputs+':</label><input type="text" name="usuario['+cuentaInputs+'][dato]" class="fila'+cuentaInputs+'" id="dato'+cuentaInputs+'"/><label class="fila'+cuentaInputs+'">Expedido por.'+cuentaInputs+':</label><input type="text" name="usuario['+cuentaInputs+'][exp]" class="fila'+cuentaInputs+'" id="exp'+cuentaInputs+'"/>').appendTo('#inputs');
+                        $('<br class="fila'+cuentaInputs+'"/><label class="fila'+cuentaInputs+' ">Titulo.'+cuentaInputs+':</label><input type="text" name="usuario['+cuentaInputs+'][dato]" class="fila'+cuentaInputs+'" id="dato'+cuentaInputs+'"/><label class="fila'+cuentaInputs+'">Expedido por.'+cuentaInputs+':</label><input type="text" name="usuario['+cuentaInputs+'][exp]" class="fila'+cuentaInputs+'" id="exp'+cuentaInputs+'"/><div></div>').appendTo('#inputs');
                     });
                 });
             </script>

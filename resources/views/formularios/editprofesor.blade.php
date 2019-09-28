@@ -1,5 +1,48 @@
 
     @csrf
+
+    <script type="text/javascript">
+    $(function (){
+    var actual_fs,next_fs,prev_fs;
+    
+    $('.next').click(function(){
+        actual_fs =$(this).parent();
+        next_fs=$(this).parent().next();
+        
+        
+        $('#progreso li').eq($('fieldset').index(next_fs)).addClass('activo')
+        actual_fs.hide(800);
+        next_fs.show(800);
+        
+    });
+
+       $('.prev').click(function(){
+        actual_fs =$(this).parent();
+        prev_fs=$(this).parent().prev();
+        
+        
+        $('#progreso li').eq($('fieldset').index(actual_fs)).removeClass('activo')
+        actual_fs.hide(800);
+        prev_fs.show(800);
+        
+    });
+    
+    
+    $('#formulario input[type=submit]').click(function(){
+      return false;  
+    });
+    
+});
+</script>
+
+<form id="formulario">
+ <ul id="progreso">
+        <li class=" text-center activo"></li>
+        <li class=" text-center la"></li>
+       
+    </ul>
+
+    <fieldset>
     <input type="hidden" class="form-control" name="id_prof" id="id_prof" value="{{$datos->id_profesor}}">
 
     @if ($errors->any())
@@ -174,7 +217,28 @@
         </div>
 
 
-        <table class="table table-striped table-success">
+
+    </div>
+    
+    <div class="form-row">
+        
+        <div class="col-md-12 mb-3">
+            <label for="12">Observaciones</label>
+            <textarea type="text" class="form-control" id="observacion" name="observacion" placeholder="Observaciones" value="{{$datos->observacion_pro}}"></textarea>
+        </div>
+    </div>
+
+
+         <a href="{{route('profesor')}}" type="button" class="btn btn-secondary  mr-sm-2">Cerrar</a>
+           <button type="button"  class="next btn btn-info" name="next">Siguiente</button>
+        
+  
+</fieldset>
+
+  
+<fieldset>
+
+            <table style="width: 1000px; margin-left: 150px;" class="table text-center table-bordered table-striped ">
             <thead>
                 <th>Titulo</th>
                 <th>Expedido por</th>
@@ -189,21 +253,9 @@
             </tbody>
         </table>
 
-    </div>
-    
-    <div class="form-row">
-        
-        <div class="col-md-12 mb-3">
-            <label for="12">Observaciones</label>
-            <textarea type="text" class="form-control" id="observacion" name="observacion" placeholder="Observaciones" value="{{$datos->observacion_pro}}"></textarea>
-        </div>
-    </div>
+              <button type="button" class="prev btn btn-danger" name="prev">Anterior</button>
 
-    <div class="modal-footer col-12">
-         <a href="{{route('profesor')}}" type="button" class="btn btn-secondary  mr-sm-2">Cerrar</a>
         <button type="submit" name="BtnEnviar" id="BtnEnviar" class="btn btn-primary">Guardar</button>
-    </div>
+        </fieldset>
 
-
-    </div>
 </form>
