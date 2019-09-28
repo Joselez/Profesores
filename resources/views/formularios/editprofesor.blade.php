@@ -1,4 +1,4 @@
-<div class="container">
+
     @csrf
     <input type="hidden" class="form-control" name="id_prof" id="id_prof" value="{{$datos->id_profesor}}">
 
@@ -173,20 +173,22 @@
     	    </select>
         </div>
 
-        
-        <input type="hidden" class="form-control" name="id_tit" id="id_tit" value="{{$titulo->id_titulo}}">
-      
-        <div class="col-md-2 mb-3">
-            <label for="16">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" value="{{$titulo->nombre_tit}}" required>
-            <div class="invalid-feedback">Por favor ingresar Titulo</div>
-        </div>
- 
-        <div class="col-md-4 mb-3">
-            <label for="17">Expedido por</label>
-            <input type="text" class="form-control" id="expedido" name="expedido" placeholder="Nombre de la Institucion" value="{{$titulo->expedido_por_tit}}" required>
-            <div class="invalid-feedback">Por favor ingresar Nombre de la Institucion</div>
-        </div>
+
+        <table class="table table-striped table-success">
+            <thead>
+                <th>Titulo</th>
+                <th>Expedido por</th>
+            </thead>
+            <tbody>
+                @foreach($titulos as $titulo)
+                    <tr>
+                        <td>{{$titulo->nombre_tit}}</td>
+                        <td>{{$titulo->expedido_por_tit}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
     </div>
     
     <div class="form-row">
@@ -201,4 +203,7 @@
          <a href="{{route('profesor')}}" type="button" class="btn btn-secondary  mr-sm-2">Cerrar</a>
         <button type="submit" name="BtnEnviar" id="BtnEnviar" class="btn btn-primary">Guardar</button>
     </div>
-</div>
+
+
+    </div>
+</form>

@@ -127,14 +127,14 @@ class ProfesorController extends Controller{
         
         $selectestado = $datos->id_estado_pro;
 
-        $titulos = new Titulo();
+        $titulo = new Titulo();
         $localidades= new Localidad();
 
-        $titulo= $titulos->where('id_profesor_tit', '=', $id)->first();
+        $titulos= $titulo->where('id_profesor_tit', '=', $id)->first()->get();
         /* ->leftJoin('titulos', 'titulos.id_profesor_tit', '=', 'profesores.id_profesor')*/
        
 
-        return view('editarprofesor',['estados'=>$estados,'provincias' =>$provincias,'datos'=>$datos, 'titulo'=>$titulo, 'selectestado'=>$selectestado]);   
+        return view('editarprofesor',['estados'=>$estados,'provincias' =>$provincias,'datos'=>$datos, 'titulos'=>$titulos, 'selectestado'=>$selectestado]);   
     }
 
 
